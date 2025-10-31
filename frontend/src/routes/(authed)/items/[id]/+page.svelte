@@ -9,7 +9,7 @@
 	import { render } from '$lib/render-item';
 	import { ExternalLink } from 'lucide-svelte';
 	import ItemSwitcher from './ItemSwitcher.svelte';
-	import { listItems, type ListFilter } from '$lib/api/item';
+	import { listItems, updateUnread, type ListFilter } from '$lib/api/item';
 	import { afterNavigate } from '$app/navigation';
 
 	let { data } = $props();
@@ -51,6 +51,13 @@
 		}
 		const resp = await listItems(filter);
 		itemsQueue = resp.items.map((item) => item.id);
+	});
+
+	$effect(() => {
+		if (item.unread) {
+			item.unread = false;
+			updateUnread([item.id], false);
+		}
 	});
 </script>
 
