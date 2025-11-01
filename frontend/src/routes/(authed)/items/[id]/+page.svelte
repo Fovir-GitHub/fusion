@@ -11,6 +11,7 @@
 	import ItemSwitcher from './ItemSwitcher.svelte';
 	import { listItems, updateUnread, type ListFilter } from '$lib/api/item';
 	import { afterNavigate } from '$app/navigation';
+	import { updateUnreadCount } from '$lib/state.svelte';
 
 	let { data } = $props();
 
@@ -57,6 +58,7 @@
 		if (item.unread) {
 			item.unread = false;
 			updateUnread([item.id], false);
+			updateUnreadCount(item.feed.id, -1);
 		}
 	});
 </script>
