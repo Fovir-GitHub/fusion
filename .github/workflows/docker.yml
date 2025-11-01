@@ -25,7 +25,7 @@ jobs:
         uses: docker/metadata-action@v5
         with:
           images: |
-            fovir-github/fusion
+            fovir/fusion
             ghcr.io/${{ env.REPOSITORY }}
           tags: |
             # on release: tag with version (e.g., v1.2.3)
