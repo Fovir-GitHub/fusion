@@ -41,6 +41,24 @@ function sanitize(content: string, baseLink: string) {
 	// 	return `src="${res}"`;
 	// });
 
+	dom.querySelectorAll('math').forEach((math) => {
+		const parent = math.parentElement;
+		const parentNext = parent?.nextElementSibling;
+
+		if (parent && parent.tagName.toLowerCase() !== 'body') {
+			parent.setAttribute('aria-hidden', 'true');
+		}
+		if (parentNext && parentNext.getAttribute('aria-hidden') === 'true') {
+			parentNext.remove();
+		}
+
+		Array.from(math.childNodes).forEach((node) => {
+			if (node.nodeType === Node.TEXT_NODE && node.textContent?.trim()) {
+				node.remove();
+			}
+		});
+	});
+
 	return new XMLSerializer().serializeToString(dom);
 }
 
