@@ -41,6 +41,7 @@ function sanitize(content: string, baseLink: string) {
 	// 	return `src="${res}"`;
 	// });
 
+  // remove duplicated elements around or inside `<math></math>` tags.
 	dom.querySelectorAll('math').forEach((math) => {
 		const parent = math.parentElement;
 		const parentNext = parent?.nextElementSibling;
