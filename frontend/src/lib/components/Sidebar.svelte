@@ -148,7 +148,7 @@
 	<div>
 		<div class="flex items-center justify-between gap-2">
 			<a
-				href="https://github.com/0x2E/fusion"
+				href="https://github.com/Fovir-GitHub/fusion"
 				target="_blank"
 				class="btn btn-ghost flex items-center justify-start gap-2"
 			>
